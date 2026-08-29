@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Costums — Gifts, Perfumes & Custom Treasures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#3d0f1f;
+    --wine-deep:#260813;
+    --gold:#c8a24a;
+    --gold-light:#e6cf9a;
+    --parchment:#f6efe2;
+    --parchment-dim:#ece2cd;
+    --blush:#e7b7b0;
+    --ink:#241015;
+    --shadow: 0 14px 40px rgba(38,8,19,0.18);
+    --radius: 6px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond',serif;
+  }
+  a{text-decoration:none;color:inherit;}
+  ::selection{background:var(--gold-light);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:2px solid var(--wine);
+    outline-offset:3px;
+  }
+
+  /* ---------- TOPBAR ---------- */
+  .topbar{
+    background:var(--wine-deep);
+    color:var(--gold-light);
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    text-align:center;
+    padding:7px 10px;
+  }
+
+  /* ---------- HEADER / NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,239,226,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(61,15,31,0.12);
+  }
+  .nav-wrap{
+    max-width:1240px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 28px; gap:24px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:12px;
+    font-weight:600;
+  }
+  .seal{
+    width:42px; height:42px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, var(--gold-light), var(--gold) 60%, #9c7a2e 100%);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--wine-deep); font-family:'Cormorant Garamond',serif;
+    font-weight:700; font-size:1.05rem;
+    box-shadow:0 4px 10px rgba(61,15,31,0.3), inset 0 0 0 2px rgba(61,15,31,0.25);
+    flex-shrink:0;
+    animation: sealPulse 4.5s ease-in-out infinite;
+  }
+  @keyframes sealPulse{
+    0%,100%{ transform:scale(1) rotate(0deg);}
+    50%{ transform:scale(1.05) rotate(-3deg);}
+  }
+  .logo-text{
+    font-size:1.5rem; letter-spacing:0.03em; color:var(--wine-deep);
+  }
+  .logo-text small{
+    display:block; font-family:'Manrope',sans-serif; font-size:0.58rem;
+    letter-spacing:0.28em; color:var(--wine); font-weight:700; text-transform:uppercase;
+  }
+  nav.links{
+    display:flex; gap:30px; font-size:0.85rem; font-weight:600;
+    letter-spacing:0.03em; color:var(--wine-deep);
+  }
+  nav.links a{ position:relative; padding-bottom:4px; }
+  nav.links a::after{
+    content:""; position:absolute; left:0; bottom:0; height:1.5px; width:0;
+    background:var(--gold); transition:width 0.3s ease;
+  }
+  nav.links a:hover::after{ width:100%; }
+  .nav-cart{
+    display:flex; align-items:center; gap:18px;
+  }
+  .icon-btn{
+    width:38px; height:38px; border-radius:50%;
+    border:1px solid rgba(61,15,31,0.25);
+    display:flex; align-items:center; justify-content:center;
+    background:transparent; cursor:pointer;
+    transition:background 0.25s, transform 0.25s;
+  }
+  .icon-btn:hover{ background:var(--wine-deep); color:var(--gold-light); transform:translateY(-2px);}
+
+  /* ---------- SEARCH ---------- */
+  .search-shell{
+    max-width:1240px; margin:0 auto; padding:0 28px 18px;
+  }
+  .search-bar{
+    display:flex; align-items:center; gap:10px;
+    background:#fffdf8;
+    border:1px solid var(--gold-light);
+    border-radius:999px;
+    padding:10px 18px;
+    box-shadow: var(--shadow);
+    transition: box-shadow .3s, border-color .3s;
+  }
+  .search-bar:hover, .search-bar:focus-within{
+    border-color:var(--gold);
+    box-shadow: 0 16px 36px rgba(61,15,31,0.22);
+  }
+  .search-bar svg{ flex-shrink:0; color:var(--wine); }
+  .search-bar input{
+    flex:1; border:none; outline:none; background:transparent;
+    font-family:'Manrope',sans-serif; font-size:0.95rem; color:var(--ink);
+  }
+  .search-bar input::placeholder{ color:#a3897a; }
+  .search-tags{
+    display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;
+  }
+  .search-tags button{
+    border:1px solid rgba(61,15,31,0.18); background:rgba(255,255,255,0.5);
+    border-radius:999px; padding:5px 14px; font-size:0.74rem;
+    color:var(--wine-deep); cursor:pointer; transition:all .25s;
+    font-weight:600;
+  }
+  .search-tags button:hover{ background:var(--wine-deep); color:var(--gold-light); border-color:var(--wine-deep);}
+  #searchMsg{
+    max-width:1240px; margin:0 auto; padding:0 28px; font-size:0.85rem; color:var(--wine);
+    min-height:1.3em;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(ellipse at 70% 20%, #5a1830 0%, var(--wine) 45%, var(--wine-deep) 100%);
+    color:var(--parchment);
+    padding:90px 28px 130px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: radial-gradient(circle, rgba(230,207,154,0.18) 1px, transparent 1px);
+    background-size: 26px 26px;
+    opacity:0.5;
+  }
+  .hero-inner{
+    max-width:1240px; margin:0 auto; position:relative; z-index:2;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;
+  }
+  .eyebrow{
+    font-size:0.72rem; letter-spacing:0.32em; text-transform:uppercase;
+    color:var(--gold-light); font-weight:700; margin-bottom:18px;
+    display:inline-block; opacity:0; animation:riseIn .8s ease forwards;
+    animation-delay:.1s;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.4rem); line-height:1.05; margin:0 0 22px;
+    font-weight:600; opacity:0; animation:riseIn .9s ease forwards; animation-delay:.25s;
+  }
+  .hero h1 em{ font-style:italic; color:var(--gold-light); font-weight:500;}
+  .hero p.lead{
+    font-size:1.08rem; line-height:1.7; max-width:480px; color:#e9d9d2;
+    opacity:0; animation:riseIn .9s ease forwards; animation-delay:.45s;
+  }
+  .hero-ctas{
+    margin-top:34px; display:flex; gap:16px; flex-wrap:wrap;
+    opacity:0; animation:riseIn .9s ease forwards; animation-delay:.6s;
+  }
+  @keyframes riseIn{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:14px 28px; border-radius:999px; font-weight:700; font-size:0.85rem;
+    letter-spacing:0.04em; cursor:pointer; border:1px solid transparent;
+    transition: transform .25s, box-shadow .25s, background .25s;
+  }
+  .btn-gold{ background:var(--gold); color:var(--wine-deep); }
+  .btn-gold:hover{ transform:translateY(-3px); box-shadow:0 12px 26px rgba(200,162,74,0.45); }
+  .btn-outline{ border-color:rgba(246,239,226,0.5); color:var(--parchment); }
+  .btn-outline:hover{ background:rgba(246,239,226,0.12); transform:translateY(-3px); }
+
+  /* hero bottle scene */
+  .hero-art{ position:relative; height:380px; }
+  .bottle-stage{
+    position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center;
+  }
+  .bottle{
+    position:relative; z-index:3;
+    animation: float 5s ease-in-out infinite;
+    filter:drop-shadow(0 30px 30px rgba(0,0,0,0.35));
+  }
+  @keyframes float{ 0%,100%{transform:translateY(0px) rotate(-1.5deg);} 50%{transform:translateY(-16px) rotate(1.5deg);} }
+  .ribbon-orbit{
+    position:absolute; width:300px; height:300px; border:1px dashed rgba(230,207,154,0.35);
+    border-radius:50%; top:30px; left:50%; transform:translateX(-50%);
+    animation: spin 18s linear infinite;
+  }
+  @keyframes spin{ to{ transform:translateX(-50%) rotate(360deg); } }
+  .sparkle{
+    position:absolute; width:8px; height:8px; background:var(--gold-light); border-radius:50%;
+    box-shadow:0 0 12px 3px rgba(230,207,154,0.7);
+    animation: twinkle 2.4s ease-in-out infinite;
+  }
+  @keyframes twinkle{ 0%,100%{opacity:0.15; transform:scale(0.7);} 50%{opacity:1; transform:scale(1.2);} }
+
+  @media (max-width:880px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-art{ height:260px; order:-1; }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section.shop{ max-width:1240px; margin:0 auto; padding:90px 28px 30px; }
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:20px;
+    margin-bottom:38px; flex-wrap:wrap;
+    border-bottom:1px solid rgba(61,15,31,0.12); padding-bottom:18px;
+  }
+  .section-head .tag{
+    font-size:0.7rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold);
+    font-weight:800; margin-bottom:8px; display:block;
+  }
+  .section-head h2{ font-size:2.3rem; margin:0; color:var(--wine-deep); font-weight:600;}
+  .section-head p{ max-width:380px; color:#6b5347; font-size:0.92rem; margin:6px 0 0;}
+
+  /* ---------- PRODUCT GRID ---------- */
+  .grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+  }
+  @media (max-width:1080px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .grid{ grid-template-columns:1fr; } }
+
+  .card{
+    background:#fffdf9; border-radius:var(--radius); overflow:hidden;
+    box-shadow:0 6px 18px rgba(61,15,31,0.08);
+    border:1px solid rgba(61,15,31,0.07);
+    transition: transform .35s ease, box-shadow .35s ease;
+    display:flex; flex-direction:column;
+    opacity:0; transform:translateY(24px);
+    transition: transform .6s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease, opacity .6s ease;
+  }
+  .card.in-view{ opacity:1; transform:translateY(0); }
+  .card:hover{ transform:translateY(-8px); box-shadow:0 22px 38px rgba(61,15,31,0.18); }
+  .card-media{
+    position:relative; height:210px;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden; background:#ece2cd;
+  }
+  .card-media img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform .6s ease, filter .6s ease;
+    filter:saturate(1.04);
+  }
+  .card:hover .card-media img{ transform:scale(1.1); }
+  .badge{
+    position:absolute; top:12px; left:12px;
+    background:var(--wine-deep); color:var(--gold-light);
+    font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase;
+    padding:4px 10px; border-radius:999px; font-weight:700;
+  }
+  .card-body{ padding:18px 18px 20px; display:flex; flex-direction:column; gap:6px; flex:1;}
+  .card-body .brand{ font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); font-weight:800;}
+  .card-body h3{ margin:0; font-size:1.25rem; color:var(--wine-deep); font-weight:600;}
+  .card-body p.desc{ font-size:0.83rem; color:#776157; margin:0; line-height:1.5; flex:1;}
+  .card-foot{
+    display:flex; align-items:center; justify-content:space-between; margin-top:10px;
+  }
+  .price{ font-weight:800; color:var(--wine-deep); font-family:'Cormorant Garamond',serif; font-size:1.15rem;}
+  .price span{ font-size:0.7rem; color:#a3897a; text-decoration:line-through; margin-right:6px; font-family:'Manrope',sans-serif;}
+  .add-btn{
+    border:1px solid var(--wine-deep); background:transparent; color:var(--wine-deep);
+    padding:8px 16px; border-radius:999px; font-size:0.72rem; font-weight:700;
+    letter-spacing:0.05em; cursor:pointer; transition:all .25s;
+  }
+  .add-btn:hover{ background:var(--wine-deep); color:var(--gold-light); }
+  .add-btn.added{ background:#3e7a4d; border-color:#3e7a4d; color:#fff; }
+
+  /* ---------- CUSTOMIZABLE BANNER ---------- */
+  .custom-banner{
+    margin:100px 0 0; padding:70px 28px;
+    background:linear-gradient(120deg, var(--wine-deep), var(--wine) 60%, #5a1830);
+    color:var(--parchment); position:relative; overflow:hidden;
+  }
+  .custom-banner .inner{
+    max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;
+  }
+  .custom-banner h2{ font-size:2.2rem; margin:0 0 16px; }
+  .custom-banner p{ color:#e9d9d2; line-height:1.7; max-width:440px; }
+  .engrave-demo{
+    background:rgba(246,239,226,0.06); border:1px solid rgba(230,207,154,0.3);
+    border-radius:10px; padding:30px; text-align:center;
+  }
+  .engrave-demo input{
+    width:100%; text-align:center; background:transparent; border:none; border-bottom:1px solid var(--gold);
+    color:var(--gold-light); font-family:'Cormorant Garamond',serif; font-size:1.6rem; padding:10px 6px;
+    outline:none;
+  }
+  .engrave-demo .plate{
+    margin-top:24px; background:linear-gradient(160deg,#cdb37a,#8a6a30);
+    border-radius:8px; padding:28px 18px; box-shadow:inset 0 2px 6px rgba(0,0,0,0.35), 0 10px 20px rgba(0,0,0,0.3);
+  }
+  .engrave-demo .plate span{
+    font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.5rem; color:#2c2009;
+    letter-spacing:0.04em;
+  }
+  @media (max-width:880px){ .custom-banner .inner{ grid-template-columns:1fr; } }
+
+  /* ---------- KIDS SECTION ---------- */
+  .kids-section{
+    background:var(--blush); background:linear-gradient(180deg, var(--parchment), #fbe9e4 40%, var(--parchment));
+    padding:90px 28px;
+  }
+  .kids-section .section-head h2{ color:#8a3b3b; }
+  .kids-section .section-head .tag{ color:#c97a6b; }
+  .kids-section .grid .card{ border-color:rgba(201,122,107,0.18); }
+  .kids-section .badge{ background:#a8434a; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--wine-deep); color:#cdb6a8; padding:60px 28px 30px; margin-top:60px;
+  }
+  .footer-grid{
+    max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:36px;
+  }
+  .footer-grid h4{ color:var(--gold-light); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; margin:0 0 16px;}
+  .footer-grid a{ display:block; color:#cdb6a8; font-size:0.85rem; margin-bottom:10px; transition:color .25s;}
+  .footer-grid a:hover{ color:var(--gold-light); }
+  .footer-bottom{
+    max-width:1240px; margin:40px auto 0; padding-top:24px; border-top:1px solid rgba(230,207,154,0.15);
+    font-size:0.78rem; color:#9c8377; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+  @media (max-width:880px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+
+  .hidden-section{ display:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">Complimentary gift wrap on every order &nbsp;•&nbsp; Free engraving on personalised gifts &nbsp;•&nbsp; Ships across the UK</div>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo">
+      <div class="seal">UC</div>
+      <div class="logo-text">UK Costums<small>Gifts · Perfumes · Keepsakes</small></div>
+    </div>
+    <nav class="links">
+      <a href="#perfumes">Perfumes</a>
+      <a href="#gifts">Gift Center</a>
+      <a href="#custom">Customise</a>
+      <a href="#kids">Kids Corner</a>
+    </nav>
+    <div class="nav-cart">
+      <button class="icon-btn" aria-label="Wishlist">♡</button>
+      <button class="icon-btn" aria-label="Bag">🛍</button>
+    </div>
+  </div>
+  <div class="search-shell">
+    <div class="search-bar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="searchInput" type="text" placeholder="Search Bellavita, Patel perfumes, hampers, photo frames…" aria-label="Search products">
+    </div>
+    <div class="search-tags">
+      <button data-q="bellavita">Bellavita</button>
+      <button data-q="patel">Patel Perfumes</button>
+      <button data-q="hamper">Gift Hampers</button>
+      <button data-q="engrav">Engraved Gifts</button>
+      <button data-q="kids">Kids Corner</button>
+    </div>
+    <p id="searchMsg"></p>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">Est. for the art of gift-giving</span>
+      <h1>Scents, gifts &amp;<br><em>stories</em> worth keeping</h1>
+      <p class="lead">From Bellavita and Patel's finest perfumes to hampers engraved with a name only you would choose — every piece at UK Costums is wrapped to be remembered, not just received.</p>
+      <div class="hero-ctas">
+        <a href="#perfumes" class="btn btn-gold">Shop Perfumes</a>
+        <a href="#custom" class="btn btn-outline">Personalise a Gift</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="ribbon-orbit"></div>
+      <div class="sparkle" style="top:20%; left:18%;"></div>
+      <div class="sparkle" style="top:60%; left:78%; animation-delay:0.8s;"></div>
+      <div class="sparkle" style="top:75%; left:30%; animation-delay:1.4s;"></div>
+      <div class="bottle-stage">
+        <img class="bottle" src="https://images.pexels.com/photos/2814832/pexels-photo-2814832.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bellavita-style perfume bottle with fedora hat and sunglasses, styled flat lay" style="width:230px; height:300px; object-fit:cover; border-radius:14px; box-shadow:0 30px 50px rgba(0,0,0,0.4);">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFUMES -->
+<section class="shop" id="perfumes">
+  <div class="section-head">
+    <div>
+      <span class="tag">Fragrance House</span>
+      <h2>Perfumes &amp; Attars</h2>
+      <p>Long-lasting Bellavita and Patel perfumes — the most gifted scents this season.</p>
+    </div>
+  </div>
+  <div class="grid" id="perfumeGrid"></div>
+</section>
+
+<!-- GIFT CENTER -->
+<section class="shop" id="gifts">
+  <div class="section-head">
+    <div>
+      <span class="tag">Gift Center</span>
+      <h2>Hampers &amp; Keepsakes</h2>
+      <p>Curated boxes for birthdays, weddings, and the "just because" days.</p>
+    </div>
+  </div>
+  <div class="grid" id="giftGrid"></div>
+</section>
+
+<!-- CUSTOMISE BANNER -->
+<section class="custom-banner" id="custom">
+  <div class="inner">
+    <div>
+      <span class="eyebrow" style="opacity:1; animation:none; color:var(--gold-light);">Make It Theirs</span>
+      <h2>Customisable Gifts, Engraved With Care</h2>
+      <p>Add a name, a date, or a quiet inside joke. Mugs, frames, hampers and jewellery boxes — each one engraved or printed exactly the way you imagine it, free of charge.</p>
+      <div style="margin-top:26px; display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="#customGrid" class="btn btn-gold">See Customisable Range</a>
+      </div>
+    </div>
+    <div class="engrave-demo">
+      <label for="engraveInput" style="font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-light);">Try it — type a name</label>
+      <input id="engraveInput" type="text" maxlength="20" placeholder="e.g. For Aanya">
+      <div class="plate"><span id="plateText">For Aanya</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="shop" id="customGrid">
+  <div class="section-head">
+    <div>
+      <span class="tag">Personalised</span>
+      <h2>Customisable Gifts</h2>
+      <p>Choose a base gift, then tell us what to engrave or print.</p>
+    </div>
+  </div>
+  <div class="grid" id="customGridInner"></div>
+</section>
+
+<!-- KIDS -->
+<section class="kids-section" id="kids">
+  <div class="section-head" style="max-width:1240px; margin:0 auto 38px;">
+    <div>
+      <span class="tag">Kids Corner</span>
+      <h2>Little Gifts, Named Just for Them</h2>
+      <p>Personalised bags, bottles and plush friends — sized for small hands, made to be loved.</p>
+    </div>
+  </div>
+  <div class="grid" id="kidsGrid" style="max-width:1240px; margin:0 auto;"></div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo-text" style="color:var(--gold-light); font-size:1.3rem;">UK Costums</div>
+      <p style="font-size:0.85rem; line-height:1.6; max-width:280px; margin-top:10px;">A boutique for gifts that are chosen, not just bought — perfumes, hampers and keepsakes engraved with a little extra thought.</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <a href="#perfumes">Perfumes</a>
+      <a href="#gifts">Gift Center</a>
+      <a href="#customGrid">Customisable Gifts</a>
+      <a href="#kids">Kids Corner</a>
+    </div>
+    <div>
+      <h4>Help</h4>
+      <a href="#">Track an Order</a>
+      <a href="#">Returns &amp; Exchanges</a>
+      <a href="#">Engraving Guide</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div>
+      <h4>Stay in Touch</h4>
+      <a href="#">Instagram</a>
+      <a href="#">Pinterest</a>
+      <a href="#">WhatsApp Orders</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 UK Costums. All rights reserved.</span>
+    <span>Made with care, wrapped with ribbon.</span>
+  </div>
+</footer>
+
+<script>
+/* ---------------- DATA ---------------- */
+const colorways = ["#c8a24a","#a8434a","#5a1830","#6b8f71","#8a6a30","#3d6b8f"];
+
+function img(id, alt){
+  return `<img src="https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=600" alt="${alt}" loading="lazy">`;
+}
+
+const perfumes = [
+  {brand:"Bellavita", name:"Luxury Royale 100ml", desc:"Rich oud and amber notes with a long-lasting trail, designed for evenings that matter.", price:"₹1,499", was:"₹1,899", badge:"Bestseller", svg:img(2814832,"Bellavita-style perfume bottle styled with hat and sunglasses")},
+  {brand:"Bellavita", name:"Heaven Eau De Parfum", desc:"Soft floral-musk blend, light enough for daywear, bold enough to be remembered.", price:"₹1,299", was:"₹1,599", badge:"New", svg:img(1961792,"Perfume bottle close-up with soft bokeh light")},
+  {brand:"Patel Perfumes", name:"Patel No.7 Attar", desc:"A classic Patel house attar — sandalwood and saffron, alcohol-free.", price:"₹899", was:"", badge:"Heritage", svg:img(3785784,"White perfume bottle product shot")},
+  {brand:"Patel Perfumes", name:"Patel Oudh Reserve", desc:"Deep, smoky oudh with a hint of rose — Patel's signature gifting fragrance.", price:"₹1,099", was:"₹1,349", badge:"Gift Pick", svg:img(8166613,"Elegant perfume bottle with floral arrangement")},
+  {brand:"Bellavita", name:"Date Night Duo Set", desc:"Two travel-size Bellavita scents packed in a satin pouch, ready to gift.", price:"₹1,099", was:"", badge:"Set of 2", svg:img(12402362,"Close-up of two perfume bottles with golden caps")},
+  {brand:"Patel Perfumes", name:"Patel Rose Mahal", desc:"A rose-forward attar inspired by old Lucknow perfumeries.", price:"₹799", was:"₹999", badge:"", svg:img(10415082,"Pink perfume bottle with bokeh background")},
+  {brand:"Bellavita", name:"Woodland Intense", desc:"Cedar, vetiver and a whisper of vanilla — built for cooler evenings.", price:"₹1,399", was:"", badge:"", svg:img(2814832,"Perfume bottle flat lay styled photo")},
+  {brand:"Patel Perfumes", name:"Patel Jasmine Nights", desc:"Jasmine and white musk, the Patel bestseller for over a decade.", price:"₹849", was:"", badge:"Patel Classic", svg:img(3785784,"White perfume bottle product photo")},
+];
+
+const gifts = [
+  {brand:"Gift Center", name:"Chocolate & Candle Hamper", desc:"Belgian-style chocolates, a soy candle and a handwritten note card.", price:"₹1,799", was:"₹2,199", badge:"Popular", svg:img(1007533,"Gift box with ribbon and bow")},
+  {brand:"Gift Center", name:"Anniversary Keepsake Box", desc:"Velvet-lined wooden box with space for photos, rings and little notes.", price:"₹2,299", was:"", badge:"Premium", svg:img(5725859,"White gift box wrapped in red ribbon on marble surface")},
+  {brand:"Gift Center", name:"Tea & Biscuit Basket", desc:"Assorted teas, shortbread and a ceramic mug, woven into a cane basket.", price:"₹1,399", was:"₹1,699", badge:"", svg:img(4397882,"Pink gift box with black ribbon on table")},
+  {brand:"Gift Center", name:"New Home Hamper", desc:"Scented reed diffuser, coasters and a welcome candle for new beginnings.", price:"₹1,999", was:"", badge:"New", svg:img(10520248,"Wrapped gift boxes with ribbons and greeting card on wooden surface")},
+  {brand:"Gift Center", name:"Birthday Surprise Box", desc:"Confetti, a mini cake topper, a Bellavita mini and a balloon set.", price:"₹1,549", was:"₹1,899", badge:"Bestseller", svg:img(7984852,"Flat lay of stylish gift boxes wrapped with ribbons")},
+  {brand:"Gift Center", name:"Self-Care Sunday Set", desc:"Bath salts, a face mask kit and a journal for a slow, quiet day.", price:"₹1,649", was:"", badge:"", svg:img(6102496,"Present box with red ribbon on wrapped gifts")},
+  {brand:"Gift Center", name:"Festive Dry Fruit Trousseau", desc:"Premium almonds, pistachios and dates in a brass-finish tray.", price:"₹2,099", was:"₹2,499", badge:"Festive", svg:img(8014845,"Hand holding a gift box with silver ribbon")},
+  {brand:"Gift Center", name:"Pocket Perfume + Card Combo", desc:"A travel-size perfume paired with a letterpress greeting card.", price:"₹699", was:"", badge:"Budget Pick", svg:img(29873592,"Two elegant wrapped gift boxes with ribbons")},
+];
+
+const customs = [
+  {brand:"Customisable", name:"Engraved Photo Frame", desc:"Solid wood frame, engraved with a name and date of your choice.", price:"₹999", was:"", badge:"Add Name", svg:img(45223,"Purple wrapped gift box")},
+  {brand:"Customisable", name:"Personalised Steel Mug", desc:"Double-walled mug printed with a name, initials or a short message.", price:"₹599", was:"₹799", badge:"Add Name", svg:img(6102496,"Present box with red ribbon")},
+  {brand:"Customisable", name:"Name-Engraved Perfume Cap", desc:"Pick any Bellavita or Patel bottle and we'll engrave the cap with a name.", price:"₹1,599", was:"", badge:"Add Name", svg:img(1961792,"Perfume bottle close-up product photo")},
+  {brand:"Customisable", name:"Custom Jewellery Box", desc:"Velvet interior keepsake box, lid engraved with initials.", price:"₹1,799", was:"₹2,099", badge:"Add Initials", svg:img(10520248,"Wrapped presents with ribbon on wooden surface")},
+];
+
+const kids = [
+  {brand:"Kids Corner", name:"Name-Printed Backpack", desc:"Lightweight school bag printed with your child's name and favourite colour.", price:"₹1,099", was:"", badge:"Add Name", svg:img(7984852,"Flat lay of colourful wrapped gift boxes")},
+  {brand:"Kids Corner", name:"Personalised Water Bottle", desc:"Leak-proof bottle with a name sticker that survives the dishwasher.", price:"₹449", was:"₹599", badge:"Add Name", svg:img(8014845,"Hand holding gift box with silver ribbon, festive background")},
+  {brand:"Kids Corner", name:"My First Teddy, Embroidered", desc:"Soft plush teddy with a name embroidered on its paw.", price:"₹799", was:"", badge:"Add Name", svg:img(245914,"Brown teddy bear plush toy with red bowtie")},
+  {brand:"Kids Corner", name:"Birthday Crown & Sash Set", desc:"Customised with the child's name and age for that one big day.", price:"₹549", was:"₹699", badge:"Add Name + Age", svg:img(29873592,"Two elegant wrapped gift boxes with ribbons")},
+];
+
+/* ---------------- RENDER ---------------- */
+function cardHTML(p){
+  return `<div class="card" data-search="${(p.brand+' '+p.name+' '+p.desc).toLowerCase()}">
+    <div class="card-media">
+      ${p.badge?`<span class="badge">${p.badge}</span>`:""}
+      ${p.svg}
+    </div>
+    <div class="card-body">
+      <span class="brand">${p.brand}</span>
+      <h3>${p.name}</h3>
+      <p class="desc">${p.desc}</p>
+      <div class="card-foot">
+        <span class="price">${p.was?`<span>${p.was}</span>`:""}${p.price}</span>
+        <button class="add-btn">Add to Bag</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+document.getElementById('perfumeGrid').innerHTML = perfumes.map(cardHTML).join("");
+document.getElementById('giftGrid').innerHTML = gifts.map(cardHTML).join("");
+document.getElementById('customGridInner').innerHTML = customs.map(cardHTML).join("");
+document.getElementById('kidsGrid').innerHTML = kids.map(cardHTML).join("");
+
+/* Add to bag interaction */
+document.body.addEventListener('click', e=>{
+  if(e.target.classList.contains('add-btn')){
+    e.target.textContent = "Added ✓";
+    e.target.classList.add('added');
+    setTimeout(()=>{ e.target.textContent="Add to Bag"; e.target.classList.remove('added'); }, 1600);
+  }
+});
+
+/* Scroll reveal */
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in-view'); } });
+},{threshold:0.15});
+document.querySelectorAll('.card').forEach((c,i)=>{
+  c.style.transitionDelay = (i%4)*0.07 + "s";
+  obs.observe(c);
+});
+
+/* Engrave demo live update */
+const engraveInput = document.getElementById('engraveInput');
+const plateText = document.getElementById('plateText');
+engraveInput.addEventListener('input', ()=>{
+  plateText.textContent = engraveInput.value.trim() ? engraveInput.value : "For Aanya";
+});
+
+/* Search */
+const searchInput = document.getElementById('searchInput');
+const searchMsg = document.getElementById('searchMsg');
+const allCards = ()=>document.querySelectorAll('.card');
+
+function runSearch(q){
+  q = q.trim().toLowerCase();
+  let count = 0;
+  allCards().forEach(c=>{
+    const match = !q || c.dataset.search.includes(q);
+    c.style.display = match ? "" : "none";
+    if(match) count++;
+  });
+  searchMsg.textContent = q ? `${count} item${count!==1?'s':''} found for "${q}"` : "";
+}
+searchInput.addEventListener('input', ()=> runSearch(searchInput.value));
+document.querySelectorAll('.search-tags button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    searchInput.value = btn.dataset.q;
+    runSearch(btn.dataset.q);
+    document.getElementById(btn.dataset.q==='kids' ? 'kids' : (btn.dataset.q==='hamper'?'gifts':(btn.dataset.q==='engrav'?'customGrid':'perfumes'))).scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
